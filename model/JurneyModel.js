@@ -30,6 +30,10 @@ const JurneyModel = new mongoose.Schema({
         type: String,
         required: [true, "Must Provide seat"],
     },
+    availableSeat: {
+        type: String,
+        required: [true, "Must Provide seat"],
+    },
     rate: {
         type: String,
         required: [true, "Must Provide seat"],
