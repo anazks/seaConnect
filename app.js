@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs  =  require('hbs')
-
+var con = require('./config/config')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin')
@@ -21,6 +21,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 hbs.registerPartials(__dirname + '/views/partials')
+
+
+async function connect() {
+  try {
+    await con();
+    console.log("DB connected");
+  } catch (error) {
+    console.log(error);
+  }
+}
+connect();
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin',adminRouter)

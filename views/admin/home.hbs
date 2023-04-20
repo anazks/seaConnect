@@ -21,8 +21,9 @@
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
     .addBoat input{
-        margin-top: 10px;
+        margin-top: 15px;
         border: none;
+        width: 100%;
     }
     .add{
         width: 100%;
@@ -649,20 +650,13 @@
                                 <div class="row">
                                     <div class="addBoat"> 
                                             <h3 style="text-align: center;">Add Boat</h3> 
-                                                    <form id="contact" action="" method="post">
+                                                    <form  id="contact" action="/admin/add-boat" method="post">
                                                         <fieldset>
-                                                        <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+                                                        <input placeholder="Boat Name" type="text" name="Boatname" tabindex="1" required autofocus>
                                                         </fieldset>
                                                         <fieldset>
-                                                        <input placeholder="Your Email Address" type="email" tabindex="2" required>
+                                                        <input placeholder="Boat Number" name="BoatNumber" type="text" tabindex="2" required>
                                                         </fieldset>
-                                                        <fieldset>
-                                                        <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
-                                                        </fieldset>
-                                                        <fieldset>
-                                                        <input placeholder="Your Web Site starts with http://" type="url" tabindex="4" required>
-                                                        </fieldset>
-                                                        
                                                         <fieldset>
                                                             <input type="submit" value="Add" class="add">
                                                         </fieldset>
@@ -674,22 +668,59 @@
 
                                     <div class="addBoat"> 
                                             <h3 style="text-align: center;">Add Route</h3> 
-                                                    <form id="contact" action="" method="post">
+                                                    <form id="contact" action="/admin/add-route" method="post">
                                                         <fieldset>
-                                                        <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+                                                        <input name="from" placeholder="From" type="text" tabindex="1" required autofocus>
                                                         </fieldset>
                                                         <fieldset>
-                                                        <input placeholder="Your Email Address" type="email" tabindex="2" required>
+                                                        <input name="to" placeholder="To" type="text" tabindex="2" required>
                                                         </fieldset>
-                                                        <fieldset>
-                                                        <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
-                                                        </fieldset>
-                                                        <fieldset>
-                                                        <input placeholder="Your Web Site starts with http://" type="url" tabindex="4" required>
-                                                        </fieldset>
-                                                        
                                                         <fieldset>
                                                             <input type="submit" value="Add" class="add">
+                                                        </fieldset>
+                                                    </form>
+ 
+  
+</div>
+
+
+ <div class="addBoat"> 
+                                            <h3 style="text-align: center;">Add Jurney</h3> 
+                                                    <form id="contact" action="/admin/add-jurney" method="post">
+                                                        <fieldset style="margin-top: 10px;">
+                                                            <select name="Boatname" id="" style="width:100%">
+                                                                    <option value=""> select Boat </option>
+                                                            </select>
+                                                        </fieldset>
+                                                        <fieldset style="margin-top: 10px;">
+                                                            <select name="to" id="" style="width:100%">
+                                                                    <option value=""> To </option>
+                                                            </select>
+                                                        </fieldset>
+                                                        <fieldset style="margin-top: 10px;">
+                                                            <select name="from" id="" style="width:100%">
+                                                                    <option value=""> from </option>
+                                                            </select>
+                                                        </fieldset>
+                                                        <fieldset style="margin-top: 10px;"> 
+                                                            <select name="employee" id="" style="width:100%">
+                                                                    <option value=""> Employee </option>
+                                                            </select>
+                                                        </fieldset>
+                                                        <fieldset style="margin-top: 10px;">
+                                                          <input name="Time" type="time">
+                                                        </fieldset>
+                                                        <fieldset style="margin-top: 10px;">
+                                                          <input name="Date" type="date">
+                                                        </fieldset>
+                                                        <fieldset style="margin-top: 10px;">
+                                                          <input name="Seat" type="numer" >
+                                                        </fieldset>
+                                                         <fieldset style="margin-top: 10px;">
+                                                          <input name="rate" type="number" >
+                                                        </fieldset>
+                                                        <fieldset style="margin-top: 10px;">
+                                                            <input type="submit" value="add" class="add">
                                                         </fieldset>
                                                     </form>
  
@@ -770,7 +801,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="main-card mb-3 card">
-                                    <div class="card-header">Active Users
+                                    <div class="card-header">Employees
                                         <div class="btn-actions-pane-right">
                                             <div role="group" class="btn-group-sm btn-group">
                                                 <button class="active btn btn-focus">Last Week</button>
@@ -784,7 +815,7 @@
                                             <tr>
                                                 <th class="text-center">#</th>
                                                 <th>Name</th>
-                                                <th class="text-center">City</th>
+                                                <th class="text-center">Mobile</th>
                                                 <th class="text-center">Status</th>
                                                 <th class="text-center">Actions</th>
                                             </tr>
