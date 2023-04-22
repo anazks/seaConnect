@@ -4,7 +4,11 @@ var boatModel = require('../model/boat_Model')
 var routeModel = require('../model/RouteModel')
 var JurneyModel = require('../model/JurneyModel')
 let employeeModel =  require('../model/employeeModel')
-let userModel = require('../model/userModel')
+let userModel = require('../model/userModel');
+const bookingModel = require('../model/bookingModel');
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
+const { route } = require('.');
 /* GET users listing. */
 router.get('/', function(req, res, next) {
         res.render('admin/Login')
@@ -87,6 +91,96 @@ router.get('/approve/:id', async(req,res)=>{
                         res.redirect('/admin')
                 }
     })
+    router.get('/bookingReport',async(req,res)=>{
+                try {
+                        let booking = await bookingModel.find();
+                        const doc = new PDFDocument();
+                        doc.fontSize(16)
+                        .text('Booking Report', { align: 'center' })
+                        .moveDown();
+
+                        booking.forEach(item => {
+                                doc.fontSize(14)
+                                //    .text(item.tickets, { underline: true })
+                                   .moveDown()
+                                   .fontSize(12)
+                                   .text(`Tickets: ${item.tickets}`)
+                                   .text(`userID: ${item.userId}`)
+                                   .text(`payment: ${item.payment}`)
+                                   .text(`employee: ${item.employee}`)
+                                   .moveDown();
+                              });
+                              doc.pipe(fs.createWriteStream('Bookingreport.pdf'));
+                              doc.end();
+                          
+                              console.log('Report generated successfully');
+                        //       client.close();
+                              res.redirect('/admin/home')
+                } catch (error) {
+                                console.log(error)
+                }
+    })
+
+
+
+    router.get('/userReport',async(req,res)=>{
+        try {
+                let users = await userModel.find();
+                const doc = new PDFDocument();
+                doc.fontSize(16)
+                .text('userReport Report', { align: 'center' })
+                .moveDown();
+
+                users.forEach(item => {
+                        doc.fontSize(14)
+                        //    .text(item.tickets, { underline: true })
+                           .moveDown()
+                           .fontSize(12)
+                           .text(`Name: ${item.userName}`)
+                           .text(`email: ${item.email}`)
+                           .text(`mobile: ${item.mobile}`)
+                           .text(`status: ${item.status}`)
+                           .moveDown();
+                      });
+                      doc.pipe(fs.createWriteStream('userReport.pdf'));
+                      doc.end();
+                  
+                      console.log('Report generated successfully');
+                //       client.close();
+                      res.redirect('/admin/home')
+        } catch (error) {
+                        console.log(error)
+        }
+})
+router.get('/empReport', async(req,res)=>{
+        try {
+                let users = await userModel.find();
+                const doc = new PDFDocument();
+                doc.fontSize(16)
+                .text('employee Report', { align: 'center' })
+                .moveDown();
+
+                users.forEach(item => {
+                        doc.fontSize(14)
+                        //    .text(item.tickets, { underline: true })
+                           .moveDown()
+                           .fontSize(12)
+                           .text(`Name: ${item.userName}`)
+                           .text(`email: ${item.email}`)
+                           .text(`mobile: ${item.mobile}`)
+                           .text(`status: ${item.status}`)
+                           .moveDown();
+                      });
+                      doc.pipe(fs.createWriteStream('EmployeeReport.pdf'));
+                      doc.end();
+                  
+                      console.log('Report generated successfully');
+                //       client.close();
+                      res.redirect('/admin/home')
+        } catch (error) {
+                        console.log(error)
+        }  
+})
     router.get('/logout',(req,res)=>{
         req.session.destroy();
         res.redirect('/')

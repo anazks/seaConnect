@@ -24,8 +24,19 @@ th, td {
 .top{
   width: 60%;
   height: 100px;
-  background-color: #ddd;
   margin: auto;
+}
+.locationBTN{
+  border: 1px solid black;
+  background-color: aqua;
+  color: blue;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.gioBtn{
+  border: 1px solid black;
+  background-color: aqua;
+  color: blue;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 </style>
 </head>
@@ -34,7 +45,7 @@ th, td {
 
 
     <div class="top">
-      <h2 class="heading" style="text-align: center;margin-top:10px; color:white;" id="showdata"> KNOW WHERE YOU ARE</h2>
+      <h2 class="heading" style="text-align: center;margin-top:10px; color:white;background-color:black" id="showdata"> KNOW WHERE YOU ARE</h2>
    
    <button class="gioBtn"  id="gio">Detect your location</button> 
     </div>
@@ -56,10 +67,10 @@ th, td {
     <td>{{status}}</td>
     <td>
         <form action="/users/location_add" method="post">
-          <input type="text"  name="lati" id="lati">
-          <input type="text"  id="longti" name="longti">
+          <input type="hidden"  name="lati" id="lati">
+          <input type="hidden"  id="longti" name="longti">
           <input type="hidden"  name="id" value="{{_id}}">
-          <input type="submit" value="update Location">
+          <input type="submit" value="update Location"  class="locationBTN"> 
         </form>
     </td>
   </tr>

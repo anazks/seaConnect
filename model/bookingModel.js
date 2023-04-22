@@ -37,14 +37,14 @@ const bookingModel = new mongoose.Schema({
         required: [true, "Must Provide payment"],
     },
     lati: {
-        type: String,
+        type: Number,
         required: [true, "Must Provide lati"],
-        default:"not set"
+        default:0
     },
     longti: {
-        type: String,
+        type: Number,
         required: [true, "Must Provide longti"],
-        defaultL:"not set"
+        default:0
     }
 
 })

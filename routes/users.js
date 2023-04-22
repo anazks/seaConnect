@@ -17,8 +17,14 @@ router.get('/home',async function(req, res, next) {
       }
 });
 router.get('/Login', function(req, res, next) {
-  res.render('employee/Login')
-});
+  if(req.session.nouser){
+    let alert = req.session.nouser;
+    console.log(alert)
+    res.render('employee/Login',{alert})
+  }else{
+    res.render('employee/Login')
+  }
+  });
 router.get('/Register', function(req, res, next) {
   res.render('employee/Regsiter')
 });
@@ -39,11 +45,12 @@ router.post('/Login', async function(req, res, next) {
       console.log(req.body,"req")
       let employee = await employeeModel.find({email:email,password:password})
       console.log(employee,"emloye");
-      if(employee){
+      if(employee.length >0){
           req.session.employee = employee[0];
           console.log( req.session.employee ,"session emp")
         res.redirect('/users/home')
       }else{
+        req.session.nouser = "userName or passwordincorrect";
         res.redirect('/users/Login')
       }
   } catch (error) {
@@ -64,6 +71,6 @@ router.post('/location_add', async(req,res)=>{
 })
 router.get('/logout',(req,res)=>{
   req.session.destroy();
-  res.redirect('/users/Login')
+  res.redirect('/')
 })
 module.exports = router;

@@ -14,7 +14,12 @@ router.get('/Register', function(req, res, next) {
   res.render('user/Register');
 });
 router.get('/Login', function(req, res, next) {
-  res.render('user/Login');
+  if(req.session.nouser){
+    let alert = req.session.nouser;
+    res.render('user/Login',{alert});
+  }else{
+    res.render('user/Login');
+  }
 });
 router.post('/Login', async(req,res)=>{
   try {
@@ -22,10 +27,13 @@ router.post('/Login', async(req,res)=>{
     let {password} = req.body;
     let userData = await userMode.find({email:email,password:password})
     console.log(userData)
-    if(userData){
+    if(userData.length>0){
+
         req.session.user = userData[0];
       res.redirect('/home')
     }else{
+      req.session.nouser ="incorrect Username or Password"
+
       res.redirect('/Login')
     }
 } catch (error) {
@@ -44,11 +52,23 @@ router.post('/Register',async(req,res)=>{
 router.get('/Home',async function(req, res, next) {
       try {
           let jurneys = await jurneyModel.find();
+          if(req.session.payemnt)
+           {
+             console.log(req.session.payemnt)
+             let paymentAlert = req.session.payemnt;
+            }
           console.log(jurneys)
             if(req.session.user){
               let user = req.session.user;
               console.log(user,"seesiondata")
-              res.render('user/Home',{jurneys,user});
+              if(req.session.alert){
+                let SeatAlert = req.session.alert;
+                console.log(paymentAlert,"payment")
+                res.render('user/Home',{jurneys,user,SeatAlert,paymentAlert});
+              }else{
+                res.render('user/Home',{jurneys,user});
+              }
+              
             }
          
       } catch (error) {
@@ -78,6 +98,10 @@ router.post('/book_Now', async(req,res)=>{
             var availableSeat =parseInt(req.body.availableSeat);
             var ticket = req.body.tickets
             var newSeat = availableSeat - ticket;
+            if(newSeat<0){
+              req.session.alert ="Set not available"
+                res.redirect('/home')
+            }
             console.log(newSeat,"new seat")
             let bookings = await bookinModel.create(req.body)
             console.log(bookings._id,"booking id")
@@ -99,7 +123,8 @@ router.post('/confirmBooking',async(req,res)=>{
             console.log(newseat,"definded")
             let paymentDOne = await bookinModel.findByIdAndUpdate({_id:id},{$set :{status:"payed",payment:amount}})
             let newSeatUpadtion = await jurneyModel.findByIdAndUpdate({_id:jurneyId},{$set :{availableSeat:newseat}})
-            res.redirect('/home')
+            req.session.payemnt = "Payment success..!!"
+            res.redirect('/Home')
       } catch (error) {
           console.log(error)
       }
