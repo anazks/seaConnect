@@ -8,6 +8,7 @@ var con = require('./config/config')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin')
+var session = require('express-session')
 
 var app = express();
 
@@ -32,6 +33,12 @@ async function connect() {
   }
 }
 connect();
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge:600000 }
+}))
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin',adminRouter)

@@ -28,13 +28,13 @@
 
     <div class="login-page" style="margin-top: 5%;">
   <div class="form">
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="text" placeholder="username"/>
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button>login</button>
-      <p class="message">Already memebr? <a href="/Login">Create an account</a></p>
+    <form action="/Register" method="post" class="login-form">
+      <input type="text" name="userName" placeholder="username"/>
+      <input type="email" name="email" placeholder="email"/>
+      <input type="text" name="mobile" placeholder="mobile"/>
+      <input type="password" name="password" placeholder="password"/>
+        <input type="submit" name="" id="" style="background-color: black;color:white">
+      <p class="message">Already memebr? <a href="/users/Login">Create an account</a></p>
     </form>
   </div>
 </div>

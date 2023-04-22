@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{>userNav}}
+
+
+{{#each bookings}}
+
+    <div class="mainDiv" style="margin-top: 10%;">
+            <div class="left" style="padding: 20px;">
+                <img src="https://play-lh.googleusercontent.com/eJuvWSnbPwEWAQCYwl8i9nPJXRzTv94JSYGGrKIu0qeuG_5wgYtb982-2F_jOGtIytY" alt="">
+            </div>
+            <div class="right">
+                 <div class="contents" style="padding:20px">
+                           <span><B>Payment Status:&nbsp;<span style="color:green">{{status}}</span></B> </span> <br>
+                           <span><B>Total Tickets:&nbsp;{{tickets}}</B></span> <br>
+                            <span><B>Amound Payed:&nbsp;{{payment}}</B></span> <br>
+                            <span><B>ID:{{_id}}</B></span>
+                          </div>
+                </div>
+                
+            </div>
+    </div>
+    {{/each}}
+</body>
+</html>

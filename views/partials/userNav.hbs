@@ -70,8 +70,11 @@
                         <ul class="nav">
                             <li><a href="/" class="active">Home</a></li>
                             <li><a href="#features">Pofile</a></li>
-                            <li><a href="#testimonials">My Bookings</a></li>
-                            <li><a href="#pricing-plans">Logout</a></li>
+                            <li><a href="/myBookings">My Bookings</a></li>
+                            {{#if user}}
+                             <li><a href="#pricing-plans">{{user.userName}}</a></li>
+                             {{/if}}
+                            <li><a href="/logout">Logout</a></li>
 
                         </ul>
                         <a class='menu-trigger'>

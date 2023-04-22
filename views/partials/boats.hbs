@@ -43,6 +43,11 @@
     </head>
     <title>Document</title>
 </head>
+<style>
+    .check{
+
+    }
+</style>
 <body>
        <section class="mini" id="work-process" style="margin-top: 10%;">
         <div class="mini-content">
@@ -58,49 +63,20 @@
 
                 <!-- ***** Mini Box Start ***** -->
                 <div class="row">
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="#" class="mini-box">
-                            <i><img src="assets/images/work-process-item-01.png" alt=""></i>
-                            <strong>Get Ideas</strong>
-                            <span>Godard pabst prism fam cliche.</span> </a>
-                         <a href="" class="btn btn-success">Book Now</a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="#" class="mini-box">
-                            <i><img src="assets/images/work-process-item-01.png" alt=""></i>
-                            <strong>Sketch Up</strong>
-                            <span>Godard pabst prism fam cliche.</span>
-                        </a>
-                         <a href="" class="btn btn-success">Book Now</a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="#" class="mini-box">
-                            <i><img src="assets/images/work-process-item-01.png" alt=""></i>
-                            <strong>Discuss</strong>
-                            <span>Godard pabst prism fam cliche.</span>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="#" class="mini-box">
-                            <i><img src="assets/images/work-process-item-01.png" alt=""></i>
-                            <strong>Revise</strong>
-                            <span>Godard pabst prism fam cliche.</span>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="#" class="mini-box">
-                            <i><img src="assets/images/work-process-item-01.png" alt=""></i>
-                            <strong>Approve</strong>
-                            <span>Godard pabst prism fam cliche.</span>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="#" class="mini-box">
-                            <i><img src="assets/images/work-process-item-01.png" alt=""></i>
-                            <strong>Launch</strong>
-                            <span>Godard pabst prism fam cliche.</span>
-                        </a>
-                    </div>
+                    {{#each jurneys}}
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-scroll-reveal="enter bottom move 50px over 0.6s after 0.2s" style="border:1px solid white;background-color:white">
+                            <div class="features-small-item">
+                                <div class="">
+                                   
+                                </div>
+                                <h5 class="features-title">{{Boatname}}</h5>
+                                <p>{{from}} To {{to}} at {{Time}}/{{Date}}</p>
+                               
+                            </div>
+                               <a href="/checkSeats/{{_id}}" class="btn btn-primary">Check Seats</a>
+                     </div>
+                      
+                    {{/each}}
                 </div>
                 <!-- ***** Mini Box End ***** -->
             </div>
