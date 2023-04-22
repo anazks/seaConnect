@@ -4,6 +4,8 @@ let jurneyModel= require('../model/JurneyModel')
 let userMode = require("../model/userModel")
 let bookinModel = require('../model/bookingModel');
 const bookingModel = require('../model/bookingModel');
+let nodemailer = require('nodemailer');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -107,7 +109,8 @@ router.get('/myBookings',  async(req,res)=>{
               console.log(req.session.user._id)
               var bookings = await bookingModel.find({userId:req.session.user._id});
               console.log(bookings,"bookingss...")
-              res.render('user/myBookings',{bookings})
+              let user = req.session.user;
+              res.render('user/myBookings',{bookings,user})
         } catch (error) {
                 console.log(error)
         }
@@ -117,6 +120,39 @@ router.get('/profile',(req,res)=>{
   let data = req.session.user;
   let user = req.session.user;
   res.render('user/profile',{data,user})
+})
+router.get('/map',(req,res)=>{
+  let user = req.session.user;
+  res.render('user/map',{user})
+})
+
+router.post('/sentMail',(req,res)=>{
+  let user = req.session.user;
+
+  let transporter = nodemailer.createTransport({
+    service:'gmail',
+    auth:{
+      user:'ecommercetest246@gmail.com',
+      pass:'iftgqrcgrduigxuk'
+    },
+    tls:{
+      rejectUnauthorized:false,
+    },
+  })
+  let mailOption  = {
+    from:"anonimous",
+    to:"anazksunil2@gmail.com",
+    subject:req.body.feedabcak,
+  };
+  transporter.sendMail(mailOption,function(err,info){
+    if(err){
+      console.log(err)
+    }else{
+      console.log("emailsent Succecfully")
+      res.redirect('/')
+    }
+  })
+
 })
 router.get('/logout',(req,res)=>{
     req.session.destroy();

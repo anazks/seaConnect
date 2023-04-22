@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Analytics Dashboard - This is an example dashboard created using build-in elements and components.</title>
+    <title>Analytics Dashboard .</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
@@ -449,82 +449,9 @@
                                         Dashboard Example 1
                                     </a>
                                 </li>
-                                <li class="app-sidebar__heading">UI Components</li>
-                                <li
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                >
-                                    <a href="#">
-                                        <i class="metismenu-icon pe-7s-diamond"></i>
-                                        Elements
-                                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                    </a>
-                                    <ul
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                    >
-                                        <li>
-                                            <a href="elements-buttons-standard.html">
-                                                <i class="metismenu-icon"></i>
-                                                Buttons
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="elements-dropdowns.html">
-                                                <i class="metismenu-icon">
-                                                </i>Dropdowns
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="elements-icons.html">
-                                                <i class="metismenu-icon">
-                                                </i>Icons
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="elements-badges-labels.html">
-                                                <i class="metismenu-icon">
-                                                </i>Badges
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="elements-cards.html">
-                                                <i class="metismenu-icon">
-                                                </i>Cards
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="elements-list-group.html">
-                                                <i class="metismenu-icon">
-                                                </i>List Groups
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="elements-navigation.html">
-                                                <i class="metismenu-icon">
-                                                </i>Navigation Menus
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="elements-utilities.html">
-                                                <i class="metismenu-icon">
-                                                </i>Utilities
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <li class="app-sidebar__heading">ADMIN</li>
+                    
+                                       
                                 <li>
                         {{>adminNav}}
                                    
@@ -547,12 +474,12 @@
                                         <i class="fa fa-star"></i>
                                     </button>
                                     <div class="d-inline-block dropdown">
-                                        <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
+                                        {{!-- <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
                                             <span class="btn-icon-wrapper pr-2 opacity-7">
                                                 <i class="fa fa-business-time fa-w-20"></i>
                                             </span>
                                             Buttons
-                                        </button>
+                                        </button> --}}
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                             <ul class="nav flex-column">
                                                 <li class="nav-item">
@@ -598,11 +525,11 @@
                                 <div class="card mb-3 widget-content bg-midnight-bloom">
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
-                                            <div class="widget-heading">Total Orders</div>
+                                            <div class="widget-heading">Total Employees</div>
                                             <div class="widget-subheading">Last year expenses</div>
                                         </div>
                                         <div class="widget-content-right">
-                                            <div class="widget-numbers text-white"><span>1896</span></div>
+                                            <div class="widget-numbers text-white"><span>{{employee}}</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -611,11 +538,11 @@
                                 <div class="card mb-3 widget-content bg-arielle-smile">
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
-                                            <div class="widget-heading">Clients</div>
+                                            <div class="widget-heading">users</div>
                                             <div class="widget-subheading">Total Clients Profit</div>
                                         </div>
                                         <div class="widget-content-right">
-                                            <div class="widget-numbers text-white"><span>$ 568</span></div>
+                                            <div class="widget-numbers text-white"><span>{{users}}</span></div>
                                         </div>
                                     </div>
                                 </div>
@@ -624,8 +551,8 @@
                                 <div class="card mb-3 widget-content bg-grow-early">
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
-                                            <div class="widget-heading">Followers</div>
-                                            <div class="widget-subheading">People Interested</div>
+                                            <div class="widget-heading">Jurneies</div>
+                                            <div class="widget-subheading">{{users}}</div>
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="widget-numbers text-white"><span>46%</span></div>
@@ -637,8 +564,8 @@
                                 <div class="card mb-3 widget-content bg-premium-dark">
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
-                                            <div class="widget-heading">Products Sold</div>
-                                            <div class="widget-subheading">Revenue streams</div>
+                                            <div class="widget-heading">Total Routes</div>
+                                            <div class="widget-subheading">{{routes}}</div>
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="widget-numbers text-warning"><span>$14M</span></div>
@@ -688,32 +615,40 @@
                                             <h3 style="text-align: center;">Add Jurney</h3> 
                                                     <form id="contact" action="/admin/add-jurney" method="post">
                                                         <fieldset style="margin-top: 10px;">
-                                                            {{#each boats}}
+                                                           
                                                             <select name="Boatname" id="" style="width:100%">
+                                                                {{#each boats}}
                                                                     <option value="{{Boatname}}"> {{Boatname}} </option>
+                                                                {{/each}}
                                                             </select>
-                                                            {{/each}}
+                                                          
                                                         </fieldset>
                                                         <fieldset style="margin-top: 10px;">
-                                                            {{#each routes}}
+                                                          
                                                             <select name="to" id="" style="width:100%">
+                                                                  {{#each rt}}
                                                                     <option value="{{from}}"> {{from}} </option>
+                                                                      {{/each}}
                                                             </select>
-                                                            {{/each}}
+                                                          
                                                         </fieldset>
                                                         <fieldset style="margin-top: 10px;">
-                                                             {{#each routes}}
+                                                            
                                                             <select name="from" id="" style="width:100%">
+                                                                 {{#each rt}}
                                                                     <option value="{{to}}"> {{to}} </option>
+                                                                      {{/each}}
                                                             </select>
-                                                            {{/each}}
+                                                          
                                                         </fieldset>
                                                         <fieldset style="margin-top: 10px;"> 
-                                                            {{#each Employees}}
+                                                          
                                                             <select name="employee" id="" style="width:100%">
+                                                                  {{#each emp}}
                                                                     <option value="{{userName}}"> {{userName}} </option>
+                                                                     {{/each}}
                                                             </select>
-                                                            {{/each}}
+                                                           
                                                         </fieldset>
                                                         <fieldset style="margin-top: 10px;">
                                                           <input name="Time" type="time" >
@@ -832,7 +767,7 @@
                                             <tbody>
 
 
-                                                {{#each employee}}
+                                                {{#each emp}}
                                             <tr>
                                                 <td class="text-center text-muted">#345</td>
                                                 <td>
@@ -906,9 +841,9 @@
                                             <tbody>
 
 
-                                                {{#each jurney}}
+                                                {{#each jrny}}
                                             <tr>
-                                                <td class="text-center text-muted">#345</td>
+                                              
                                                 <td>
                                                     <div class="widget-content p-0">
                                                         <div class="widget-content-wrapper">
@@ -930,6 +865,9 @@
                                                 </td>
                                                  <td class="text-center">
                                                     <div class="badge badge-warning">{{employee}}</div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <div class="badge badge-warning">{{Time}}</div>
                                                 </td>
                                                  <td class="text-center">
                                                     <div class="badge badge-warning">{{availableSeat}}</div>

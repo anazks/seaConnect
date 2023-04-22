@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var employeeModel = require('../model/employeeModel')
-var bookingModel = require('../model/bookingModel')
+var bookingModel = require('../model/bookingModel');
+const { route } = require('.');
 /* GET users listing. */
 router.get('/home',async function(req, res, next) {
       try {
@@ -49,4 +50,20 @@ router.post('/Login', async function(req, res, next) {
     console.log(error)
   }
 });
+router.get('/profile',(req,res)=>{
+  let employee = req.session.employee;
+  res.render('employee/profile',{employee})
+})
+router.post('/location_add', async(req,res)=>{
+      try {
+          let locationUpdate = await bookingModel.findByIdAndUpdate({_id:req.body.id},{$set :{lati:req.body.lati,longti:req.body.longti}})
+          res.redirect('/users/home')
+      } catch (error) {
+        console.log(error)
+      }
+})
+router.get('/logout',(req,res)=>{
+  req.session.destroy();
+  res.redirect('/users/Login')
+})
 module.exports = router;

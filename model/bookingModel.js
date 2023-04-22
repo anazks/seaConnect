@@ -35,6 +35,16 @@ const bookingModel = new mongoose.Schema({
     employee: {
         type: String,
         required: [true, "Must Provide payment"],
+    },
+    lati: {
+        type: String,
+        required: [true, "Must Provide lati"],
+        default:"not set"
+    },
+    longti: {
+        type: String,
+        required: [true, "Must Provide longti"],
+        defaultL:"not set"
     }
 
 })
