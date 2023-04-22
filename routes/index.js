@@ -113,8 +113,13 @@ router.get('/myBookings',  async(req,res)=>{
         }
  
 })
+router.get('/profile',(req,res)=>{
+  let data = req.session.user;
+  let user = req.session.user;
+  res.render('user/profile',{data,user})
+})
 router.get('/logout',(req,res)=>{
-    req.session.user.destroy();
+    req.session.destroy();
     res.redirect('/login')
 })
 module.exports = router;

@@ -63,14 +63,18 @@
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="#" class="logo">
-                            <img src="assets/images/logo.png" alt="Softy Pinko"/>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrFRdrvQAohNH8ZXXJmiCUoM3KpKIZgAFOLQ&usqp=CAU" alt="Softy Pinko"/>
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li><a href="/" class="active">Home</a></li>
-                            <li><a href="#features">Pofile</a></li>
+                            <li><a href="/home" class="active">Home</a></li>
+                            {{#if user}}
+                            <li><a href="/profile">Pofile</a></li>
+                            {{/if}}
+                            {{#if user}}
                             <li><a href="/myBookings">My Bookings</a></li>
+                            {{/if}}
                             {{#if user}}
                              <li><a href="#pricing-plans">{{user.userName}}</a></li>
                              {{/if}}
